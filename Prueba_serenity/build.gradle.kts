@@ -1,14 +1,7 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:4.0.1")
-    }
-}
 plugins {
     java
     idea
+    id("net.serenity-bdd.serenity-gradle-plugin") version "4.0.1"
 }
 
 group = "co.com.PruebaSerenity"
