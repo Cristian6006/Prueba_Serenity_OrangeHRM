@@ -16,7 +16,7 @@ Característica: Editar Usuario
   @EditarUsuario
 
   Escenario: Actualizar un usuario existente
-    Dado el administrador crea un nuevo usuario
+    Dado que existe un usuario
     Cuando el administrador actualiza la informacion del usuario
     Entonces deberia ver un mesaje de exito
     Y los datos actualizados deberian verse reflejados

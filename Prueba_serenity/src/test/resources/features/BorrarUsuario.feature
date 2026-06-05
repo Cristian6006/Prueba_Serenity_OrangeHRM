@@ -16,7 +16,7 @@ Característica: Agregar Usuario
     @BorrarUsuario
 
     Escenario: Eliminar un usuario
-      Dado el administrador crea un nuevo usuario
-      Cuando el administrador elimina a el usuario
+      Dado que existe un usuario
+      Cuando elimina a el usuario del sistema
       Entonces deberia ver un mesaje de exito
       Y que el usuario no exista en la lista

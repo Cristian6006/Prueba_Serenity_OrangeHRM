@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import org.openqa.selenium.Keys;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -23,12 +24,14 @@ public class AgregarUsuario implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        String borrarTodo = Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE;
         actor.attemptsTo(
                 Click.on(UsuariosUI.BOTON_AGREGAR_USUARIOS),
                 Enter.theValue(usuario.getFirstName()).into(UsuariosUI.INPUT_PRIMER_NOMBRE),
                 Enter.theValue(usuario.getMiddleName()).into(UsuariosUI.INPUT_SEGUNDO_NOMBRE),
                 Enter.theValue(usuario.getLastName()).into(UsuariosUI.INPUT_APELLIDO),
-                Enter.theValue(usuario.getId()).into(UsuariosUI.INPUT_ID),
+                Enter.theValue(borrarTodo).into(UsuariosUI.INPUT_ID),
+                Enter.theValue(usuario.getId()).into(UsuariosUI.INPUT_ID).thenHit(Keys.TAB),
                 Click.on(UsuariosUI.BOTON_SALVAR_USUARIOS)
         );
     }
