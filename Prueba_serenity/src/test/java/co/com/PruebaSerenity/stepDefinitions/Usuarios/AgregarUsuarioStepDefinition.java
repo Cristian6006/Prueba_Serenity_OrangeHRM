@@ -1,17 +1,30 @@
 package co.com.PruebaSerenity.stepDefinitions.Usuarios;
 
+import co.com.PruebaSerenity.factories.UsuarioFactory;
+import co.com.PruebaSerenity.models.Usuario;
+import co.com.PruebaSerenity.questions.Usuarios.UsuarioVisible;
+import co.com.PruebaSerenity.task.Usuarios.AgregarUsuario;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actors.OnStage;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static org.hamcrest.Matchers.is;
 
 public class AgregarUsuarioStepDefinition {
-    @Cuando("el administrador ingrese los datos del nuevo usuario")
+
+    private Usuario currentUser;
+
+    @Cuando("el administrador crea un nuevo usuario")
     public void elAdministradorIngreseLosDatosDelNuevoUsuario() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        currentUser = UsuarioFactory.randomUser();
+        Actor actor = OnStage.theActorInTheSpotlight();
+        actor.attemptsTo(AgregarUsuario.with(currentUser));
     }
     @Entonces("ver el nuevo usuario en la lista")
     public void verElNuevoUsuarioEnLaLista() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Actor actor = OnStage.theActorInTheSpotlight();
+        actor.should(seeThat(UsuarioVisible.inTheList(currentUser), is(true)));
     }
 }

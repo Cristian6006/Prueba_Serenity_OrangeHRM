@@ -1,29 +1,34 @@
 package co.com.PruebaSerenity.stepDefinitions.Autenticacion;
 
+import co.com.PruebaSerenity.models.Credenciales;
+import co.com.PruebaSerenity.questions.Autenticacion.TituloDashboard;
+import co.com.PruebaSerenity.task.Autenticacion.IniciarSesion;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
+import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.actors.OnStage;
+
+import java.util.List;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class AutenticacionStepDefinition {
     @Dado("Que el administrador se encuentra la pagina de Autenticacion de OrangeHRM")
     public void queElAdministradorSeEncuentraLaPaginaDeAutenticacionDeOrangeHRM() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        OnStage.theActorInTheSpotlight().wasAbleTo(Open.url("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"));
     }
     @Cuando("inicie sesion con las credenciales correctas")
-    public void inicieSesionConLasCredencialesCorrectas(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+    public void inicieSesionConLasCredencialesCorrectas(List<Credenciales> credenciales) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                IniciarSesion.conCredenciales(credenciales)
+        );
     }
     @Entonces("deberia ser redirigido al dashboard principal")
     public void deberiaSerRedirigidoAlDashboardPrincipal() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(TituloDashboard.tituloDashboard())
+        );
     }
 }
