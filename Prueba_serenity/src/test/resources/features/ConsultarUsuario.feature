@@ -15,11 +15,7 @@ Característica: Consultar Usuario
 
   @ConsultarUsuario
 
-  Esquema del escenario: Buscar usuario por nombre
-    Cuando el administrador ingresa el nombre del usuario
-    | usuario |
-    | Alex |
-    Entonces debria ver unicamente el usuario con "<nombre>" buscado
-    Ejemplos:
-    | nombre |
-    | Alex |
+  Escenario: Buscar usuario por nombre y ID
+    Dado que existe un usuario
+    Cuando e ingresa el nombre del usuario y su ID
+    Entonces deberia ver unicamente el usuario con su nombre y ID
