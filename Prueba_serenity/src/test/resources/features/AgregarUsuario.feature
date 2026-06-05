@@ -16,8 +16,7 @@ Característica: Agregar Usuario
   @AgregarUsuario
 
   Escenario: Crear un nuevo usuario
-    Dado que existe un empleado registrado
-    Cuando el administrador ingrese los datos del nuevo usuario
+    Cuando el administrador crea un nuevo usuario
     Entonces deberia ver un mesaje de exito
     Y ver el nuevo usuario en la lista
 
