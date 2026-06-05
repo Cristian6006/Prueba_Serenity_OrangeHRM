@@ -1,9 +1,5 @@
 package co.com.PruebaSerenity.models;
 
-
-
-import java.util.Locale;
-
 public class Usuario {
     private String firstName;
     private String middleName;
@@ -16,6 +12,7 @@ public class Usuario {
     public String getMiddleName() { return middleName;}
     public String getLastName() { return lastName;}
     public String getId() { return id;}
+    public String getFullName() { return (firstName + " " + lastName).trim(); }
 
     public static Builder builder() { return new Builder();}
 

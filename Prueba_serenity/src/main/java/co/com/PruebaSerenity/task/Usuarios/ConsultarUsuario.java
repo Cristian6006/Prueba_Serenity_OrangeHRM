@@ -5,34 +5,27 @@ import co.com.PruebaSerenity.userInterfaces.UsuariosUI;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
-public class BorrarUsuario implements Task {
+public class ConsultarUsuario implements Task {
     private final Usuario usuario;
 
-    public BorrarUsuario(Usuario usuario) {
+    public ConsultarUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public static BorrarUsuario with(Usuario usuario) {
-        return instrumented(BorrarUsuario.class, usuario);
+    public static ConsultarUsuario with(Usuario usuario) {
+        return instrumented(ConsultarUsuario.class, usuario);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        String iD = usuario.getId();
         actor.attemptsTo(
                 EsperarUsuarioVisible.conDatosDe(usuario),
-                Click.on(UsuariosUI.BOTON_ACTUALIZAR_USUARIO),
-                Enter.theValue(iD).into(UsuariosUI.INPUT_ID),
-                Click.on(UsuariosUI.BOTON_BUSCAR),
-                Click.on(UsuariosUI.BOTON_BORRAR_USUARIO.of(iD)),
-                WaitUntil.the(UsuariosUI.BOTON_CONFIRMAR_BORRADO, isVisible()).forNoMoreThan(3).seconds(),
-                Click.on(UsuariosUI.BOTON_CONFIRMAR_BORRADO)
+                Click.on(UsuariosUI.BOTON_ACTUALIZAR_USUARIO)
         );
     }
 }
