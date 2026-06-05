@@ -17,7 +17,7 @@ Característica: Consultar Usuario
 
   Esquema del escenario: Buscar usuario por nombre
     Cuando el administrador ingresa el nombre del usuario
-    | nombre |
+    | usuario |
     | Alex |
     Entonces debria ver unicamente el usuario con "<nombre>" buscado
     Ejemplos:
